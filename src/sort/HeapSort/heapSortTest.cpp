@@ -4,8 +4,8 @@
 #include <functional>
 #include <algorithm>
 #include <type_traits>
-#include "../../include/heapSort.hpp"
-#include "../../include/common.hpp"
+#include "../../../include/heapSort.hpp"
+#include "../../../include/common.hpp"
 
 using namespace std;
 
