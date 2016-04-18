@@ -15,8 +15,8 @@ inline void inData(std::vector<T> &s, std::istream &is)
 template <typename T>
 inline void outData(std::vector<T> &d, std::ostream &os)
 {
-	for(const auto &e : d)
-		os << e << "\t";
+	for(auto e=d.cbegin(); e!=d.cend();++e)
+		os << *e << "\t";
 	os << std::endl;
 }
 
