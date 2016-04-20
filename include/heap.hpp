@@ -14,18 +14,6 @@
 #define RIGHT_CH(POST) ( LEFT_CH(POST)+1 )
 #define PARENT(POST) ( (POST-1)>>1 )
 
-//检查元素类型是否为算术类型
-template <typename T>
-static inline bool CheckArithmType()
-{
-	using namespace std;
-
-	if(is_arithmetic<T>::value == false) {
-		cerr << "The element's type must is arithmetic" << endl;
-		return false;
-	}
-	return true;
-}
 
 //从一列元素中根据选取规则选取极值并返回它和对应于列中位置组成的pair
 template <typename T, typename __compare>
