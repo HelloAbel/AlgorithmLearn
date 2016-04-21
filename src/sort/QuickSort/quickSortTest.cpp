@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-	typedef float TYPE;
+	typedef int TYPE;
 	vector<TYPE> vt;
 	TYPE ele;
 	ifstream ifs;

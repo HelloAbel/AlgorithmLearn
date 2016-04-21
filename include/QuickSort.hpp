@@ -27,6 +27,19 @@ bool qSort(std::vector<T> &vt, comfunc comp =
 	return true;
 }
 
+template <typename T, typename comf>
+void tailRecur(std::vector<T> &s, comf cf, 
+		int begin, int end)
+{
+	int i = begin;
+
+	while(i<end) {
+		auto pp = partition<T, comf>(s, cf, i, end);
+		tailRecur(s, cf, i, pp.first-1);
+		i = pp.second+1;
+	}
+}
+
 template <typename T, typename _comfunc>
 void quickSort(std::vector<T> &s, _comfunc _comp,
 		int begin, int end)
@@ -34,8 +47,10 @@ void quickSort(std::vector<T> &s, _comfunc _comp,
 	if(begin < end) {
 		auto part = partition<T, _comfunc>(s, _comp, begin, end);
 		quickSort(s, _comp, begin, part.first-1);
-		quickSort(s, _comp, part.second+1, end);
-		
+//		quickSort(s, _comp, part.second+1, end);
+		//将第二个递归式改成尾递归的形式
+		//减小栈深度
+		tailRecur<T, _comfunc>(s, _comp, begin, end);
 		std::cout << std::endl;
 	}
 }
@@ -74,8 +89,8 @@ auto partition(std::vector<T> &s, __comfunc __comp,
 	//此时，相等的区间在数组最后，此时分两种情况讨论
 	//当相等区间长度小于中间区间长度时
 	//和相等区间长度大于中间区间长度时
-	//两种情况返回的相等区间结束下标也就是返回的第二个值
-	//不一样，需要区别对待
+	//两种情况下当把相等区间移到中间时与中间区间的交换
+	//动作有区别
 	if((end-eqp)<(eqp-rep)) {
 		for(int i=0; (eqp+i)!=end; ++i) 
 			std::swap(s[i+rep+1], s[i+eqp+1]);
