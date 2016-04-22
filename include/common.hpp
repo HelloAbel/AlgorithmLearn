@@ -7,12 +7,26 @@
 
 //检查元素类型是否为算术类型
 template <typename T>
-static inline bool CheckArithmType()
+bool CheckArithmType()
 {
 	using namespace std;
 
 	if(is_arithmetic<T>::value == false) {
 		cerr << "The element's type must is arithmetic" << endl;
+		return false;
+	}
+	return true;
+}
+
+//检查元素类型是否为整形
+template <typename T>
+bool CheckIntegral()
+{
+	using namespace std;
+
+	if(is_integral<T>::value == false 
+			|| is_unsigned<T>::value == false) {
+		cerr << "The element's type must is unsigned integral" << endl;
 		return false;
 	}
 	return true;
