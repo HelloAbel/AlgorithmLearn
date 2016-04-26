@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-	typedef unsigned long TYPE;
+	typedef long TYPE;
 	vector<TYPE> vt;
 	TYPE ele;
 	ifstream ifs;

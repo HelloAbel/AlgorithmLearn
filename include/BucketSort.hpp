@@ -1,6 +1,6 @@
 //桶排序头文件
 //2016-04-25
-//
+//注意：只支持非负元素，如有负数则会被强转成非负数
 #ifndef BUCKET_SORT_HPP__
 #define BUCKET_SORT_HPP__
 
@@ -58,17 +58,18 @@ bool bucketSort(std::vector<T> &s)
 	auto size = s.size();
 	auto maxEle = max_element(s.begin(), s.end());
 	vector<ele> tmps(s.size());
-	//落入同一个桶中的用链表串起来
 	vector<ele> sameBucket(s.size());
 	unsigned post;
 	//对每一个元素进行处理成0-1的规范项
 	auto maxpost = static_cast<double>(pow(bias(*maxEle)));
 	unsigned postSlot;
-
+	
+	//初始化规范化后的数组tmps和桶数组sameBucket
 	for(int i=0; i!=s.size(); ++i) {
 		tmps[i].num = static_cast<double>(s[i])/maxpost;
 		sameBucket[i].num = numeric_limits<T>::min();
 	}
+	//落入同一桶中的元素串成链表
 	for(int i=0; i!=s.size(); ++i) {
 		//当用智能指针串成链表的时候需要注意，如果不传递删除器，
 		//智能指针会将参数当作动态内存释放，而ele类型是聚合类，
