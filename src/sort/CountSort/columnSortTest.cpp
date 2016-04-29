@@ -1,15 +1,15 @@
-//测试快速排序
+//测试列排序
 //2016-04-20
 //
 #include <iostream>
 #include <fstream>
-#include "../../../include/QuickSort.hpp"
+#include "../../../include/ColumnSort.hpp"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-	typedef int TYPE;
+	typedef unsigned long TYPE;
 	vector<TYPE> vt;
 	TYPE ele;
 	ifstream ifs;
@@ -23,8 +23,7 @@ int main(int argc, char *argv[])
 		inData(vt, cin);
 	ifs.close();
 
-	if(qSort<TYPE>(vt, [](TYPE x, TYPE y) ->bool
-				{ return x<y?true:false; }))
+	if(columnSort<TYPE>(vt))
 		cout << "Succeed!!!" << endl;
 
 	if(argc>=3) {

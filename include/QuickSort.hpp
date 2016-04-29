@@ -51,7 +51,6 @@ void quickSort(std::vector<T> &s, _comfunc _comp,
 		//将第二个递归式改成尾递归的形式
 		//减小栈深度
 		tailRecur<T, _comfunc>(s, _comp, begin, end);
-		std::cout << std::endl;
 	}
 }
 
