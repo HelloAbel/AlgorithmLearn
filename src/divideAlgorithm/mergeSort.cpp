@@ -3,6 +3,7 @@
 #include <fstream>
 #include <functional>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
